@@ -1,0 +1,22 @@
+.availableButton{
+    background-color: #F5FBF8;
+    border: none;
+    border-radius: 20px;
+    color: #359A73;
+    font-size: 1em;
+    height: 3em;
+    width: 127px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.notAvailableButton{
+    background-color: #FFE1E1;
+    border: none;
+    border-radius: 20px;
+    color: #FF1010;
+    font-size: 1em;
+    height: 3em;
+    padding: 0 20px;
+    /* width: 157px; */
+    font-family: 'Montserrat', sans-serif;
+}

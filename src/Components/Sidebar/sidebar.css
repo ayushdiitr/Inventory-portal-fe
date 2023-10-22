@@ -1,0 +1,114 @@
+.sidebar {
+  background-color: rgba(66, 35, 53, 1);
+  height: 100%;
+  width: 12%;
+  position: fixed !important;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.hex {
+  background-image: url(./Assets/hexagons.svg);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.itemCont {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90%;
+  z-index: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.btn-item {
+  padding: 4% 2%;
+  margin: 15% 0% 0 7%;
+  border: none;
+  width: 80%;
+  height: 70%;
+  display: flex;
+  background-color: #583248;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.btn-item img {
+  height: 85%;
+  width: 20%;
+}
+
+.btn-item p {
+  display: flex;
+  margin: 0;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.btn-item:focus {
+  background-color: #8f617c;
+}
+
+.btn-selected {
+  background-color: #8f617c;
+}
+
+.btn-item:hover {
+  background-color: #8f617c;
+}
+
+.logout {
+  display: flex;
+  margin-left: 4.2%;
+  margin-top: 150%;
+  flex-direction: column;
+}
+
+.btn-logout {
+  padding: 8px 4px;
+  /* margin: 36px 0 0 15px; */
+  border: none;
+  background-color: transparent;
+  border-radius: 4px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-logout img {
+  margin-right: 10px;
+  height: 30px;
+  width: 33px;
+}
+
+.btn-logout p {
+  margin-right: 10px;
+}
+
+.userName {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-top: -82%;
+  font-size: 12px;
+}

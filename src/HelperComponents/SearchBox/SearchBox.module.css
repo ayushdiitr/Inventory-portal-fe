@@ -1,0 +1,40 @@
+.box{
+    width: 811px;
+    height: 55px;
+    position: relative;
+    display: flex;       
+}
+
+.searchBox {
+    width: 100%;
+    border: 2px solid white;
+    background-color: #F3F2F2;
+    font-size: 24px;
+    height: 100%;
+    border-radius: 24px 0 0 24px;
+    padding-left: 30px;
+
+    color: #9DBFAF;
+  }
+
+img{
+    background: transparent;
+    height: 20px;
+    width: 20px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+  
+
+.space{
+    width: 12px;
+  }
+  
+.searchButton {
+    width: 53px;
+    height: 59px;
+    border: 1px solid #422335;
+    background:  #422335;
+    border-radius: 0 24px 24px 0;
+    cursor: pointer;
+  }

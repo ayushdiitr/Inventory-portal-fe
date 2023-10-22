@@ -1,0 +1,78 @@
+.form {
+  margin: 12px 0;
+}
+
+.container {
+  margin-top: 6px;
+}
+.select {
+  margin-top: 10px;
+  width: 100%;
+}
+.submitBtn {
+  width: 7vw;
+  height: 6vh;
+  margin-top: 4%;
+  border: none;
+  background-color: #027f19;
+  color: white;
+  border-radius: 20px;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.container2 {
+  display: none;
+}
+
+form input {
+  height: 2.5vh;
+  /* width: 80px !important; */
+  /*for checkbox */
+}
+
+.select {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 11px;
+  background: #f3f2f2;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.select select {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px !important;
+  width: 100%;
+  margin: 0;
+  padding: 5px 10px;
+  height: max-content;
+  background: #f3f2f2;
+  height: 7vh;
+  border: solid #f3f2f2;
+}
+
+.item {
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input:invalid {
+  border: 2px solid #c00000;
+  background-color: #ffdddd;
+}
+
+form:invalid button {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* input:invalid:focus{
+    background: linear-gradient(pink, rgb(189, 78, 78));
+} */

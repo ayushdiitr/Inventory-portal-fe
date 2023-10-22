@@ -1,0 +1,62 @@
+[
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 9mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":false
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 8mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":false
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    },
+    {
+        "item_name":"GLUE GUN 7mm",
+        "quantity":3,
+        "status":"AVAILABLE",
+        "issue":true
+    }
+]

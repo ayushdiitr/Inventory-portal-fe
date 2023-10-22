@@ -1,0 +1,11 @@
+.delBtn{
+    width: 110px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #c70000;
+    border: none;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+}

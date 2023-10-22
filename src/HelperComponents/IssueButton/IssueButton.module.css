@@ -1,0 +1,24 @@
+.greenIssueButton {
+    background-color: #027F19;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    height: 40px;
+    letter-spacing: 0.02em;
+    width: 120px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+.greyIssueButton {
+    background-color: #8F8F8F;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    height: 40px;
+    width: 120px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: not-allowed;
+}

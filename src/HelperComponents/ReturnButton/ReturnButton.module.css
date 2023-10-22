@@ -1,0 +1,23 @@
+.redReturnButton {
+    background-color: #FF1010B2;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    height: 40px;
+    width: 110px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+.greyReturnButton {
+    background-color: #8F8F8F;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+    height: 40px;
+    width: 110px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: not-allowed;
+}

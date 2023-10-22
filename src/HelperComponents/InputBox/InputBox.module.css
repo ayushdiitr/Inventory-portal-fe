@@ -1,0 +1,35 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.input input {
+  border-radius: 12px;
+  width: 30vw;
+  height: 7vh;
+  background-color: #F3F2F2;
+  margin-top: 5px;
+  border: none;
+  color: #000;
+  font-size: 1vw;
+  padding-left: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input input:active {
+  outline: none;
+}
+
+@media (max-width: 758px) {
+  .input label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .input input {
+    height: 31px;
+    padding: 4px;
+  }
+}
