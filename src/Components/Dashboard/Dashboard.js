@@ -15,7 +15,8 @@ import DeleteForm from "../Forms/DeleteForm";
 import IssueForm from "../Forms/IssueForm";
 import UpdateForm from "../Forms/UpdateForm";
 
-const Dashboard = () => {
+
+const Dashboard = ({user}) => {
   const [cookie] = useCookies();
   const [itemsData, setItemsData] = useState([]);
   const [modal, setModal] = useState(false);

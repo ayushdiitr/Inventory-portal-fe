@@ -21,7 +21,7 @@ import Modal from "./HelperComponents/Modal/Modal";
 function App() {
   const [cookie] = useCookies();
   const dispach = useDispatch();
-  const { isAuth } = useSelector((state) => state.user);
+  const { isAuth,user } = useSelector((state) => state.user);
   const { open } = useSelector(state => state.modal);
 
   useEffect(() => {
@@ -52,8 +52,8 @@ function App() {
             path="/"
             element={isAuth ? <Header /> : <Navigate to="/login" />}
           >
-            <Route index element={<Dashboard />} />
-            <Route element={<Dashboard />} path="dashboard" />
+            <Route index element={<Dashboard user={user}/>} />
+            <Route element={<Dashboard user={user}/>} path="dashboard" />
             <Route element={<LogPortal />} path="logsPortal" />
           </Route>
           <Route

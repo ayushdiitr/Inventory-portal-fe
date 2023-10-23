@@ -13,6 +13,7 @@ import Modal from "../../HelperComponents/Modal/Modal";
 import { useSelector } from "react-redux";
 import inventoryLogo from "./Assets/inventoryLogo.svg";
 import ItemForm from "../Forms/ItemForm";
+import AddUserForm from "../Forms/AddUserForm";
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
@@ -44,6 +45,24 @@ const Sidebar = () => {
             <img className="" src={inventoryLogo} alt="" />
             <h3>Welcome,{userName} !</h3>
           </div>
+          {user.user.user.roles.role==="HOD"?(
+              <button
+              className="btn-item"
+              onClick={() => {
+                dispatch(
+                  setModalOpen({
+                    open: true,
+                    header: "Add User",
+                    component: <AddUserForm />,
+                  })
+                );
+              }}
+              >
+                <p>Add Users</p>
+              </button>
+          ):(
+            null
+          )}
           <Link to="/dashboard">
             <button
               className={`btn-item ${path === "/dashboard" ? "btn-selected" : ""

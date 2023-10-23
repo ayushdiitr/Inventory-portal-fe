@@ -9,6 +9,7 @@ import { get } from "lodash";
 import Loader from "../../HelperComponents/Loader/Loader";
 import { Button, notification } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ItemForm = ({ itemData, handleModal }) => {
   const options = [
@@ -41,6 +42,7 @@ const ItemForm = ({ itemData, handleModal }) => {
   const [limit, setLimit] = useState(get(itemData, "limit", null));
   const [units, setUnits] = useState(get(itemData, "unit", "units"));
   const [apis, contextHolder] = notification.useNotification();
+  const {user} = useSelector((state)=>state.user)
 
   const errorNotification = (type) => {
     apis[type]({
@@ -66,6 +68,9 @@ const ItemForm = ({ itemData, handleModal }) => {
         itemType,
         limit,
         unit: units,
+        owners:new Map([
+          [user.user._id,quantity]
+        ])
       };
       if (itemData) {
         await api.post(`app/v1/item/updateitem/${get(itemData, "_id")}`, data, {
