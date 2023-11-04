@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./sidebar.css";
 import inventory from "./Assets/sell.svg";
@@ -18,6 +18,7 @@ import AddUserForm from "../Forms/AddUserForm";
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
   const userName = user.user.user.name;
+  const role = user.user.user.roles.role;
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [, removeCookie] = useCookies();
@@ -44,6 +45,9 @@ const Sidebar = () => {
           <div className="userName">
             <img className="" src={inventoryLogo} alt="" />
             <h3>Welcome,{userName} !</h3>
+            <h4>{role}</h4>
+            <h4>{user.user.user.roles.lab.name}</h4>
+            <h4>{user.user.user.department.name}</h4>
           </div>
           {user.user.user.roles.role==="HOD"?(
               <button

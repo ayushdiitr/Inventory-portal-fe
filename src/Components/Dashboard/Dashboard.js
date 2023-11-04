@@ -32,6 +32,7 @@ const Dashboard = ({user}) => {
           Authorization: `Bearer ${cookie.token}`,
         },
       });
+      console.log(data)
       setItemsData(get(data, "data.data"));
     })();
   }, [modal]);
