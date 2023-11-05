@@ -45,9 +45,9 @@ const IssueForm = ({ itemData, handleModal }) => {
       const data = {
         item,
         quantity,
-        issuer,
+        issuedFrom : {issuer: user.user.user.name},
         holderName,
-        issueDate,
+        dateOfIssue : issueDate,
         projectName,
         description,
         contactNumber,

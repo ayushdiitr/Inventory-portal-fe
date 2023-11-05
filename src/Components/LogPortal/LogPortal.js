@@ -28,7 +28,6 @@ const LogPortal = () => {
   const handleClick = (data) => {
     setTrigger(data);
   };
-
   return (
     <div>
       <Table columns={columns(handleClick)} dataSource={logsData} />

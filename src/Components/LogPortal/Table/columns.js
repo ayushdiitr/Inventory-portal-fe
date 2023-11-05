@@ -24,6 +24,13 @@ const columns = (handleClick = () => { }) => [
     sorter: (a, b) => a.holderName.length - b.holderName.length,
   },
   {
+    key: "issuedFrom",
+    title: "ISSUED FROM",
+    render: (data) => {
+      return <>{data.issuedFrom.issuer}</>;
+    }
+  },
+  {
     key: "holdersNumber",
     title: "CONTACT NUMBER",
     dataIndex: "contactNumber",

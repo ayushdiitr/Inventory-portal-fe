@@ -36,7 +36,6 @@ const Sidebar = () => {
     setModalOpen(false);
     console.log("!!!!");
   };
-  console.log(modalOpen);
 
   const comp = <ItemForm handleModal={handleModal} />;
   const userComp = <AddUserForm handleModal={handleModal} />;
@@ -53,7 +52,7 @@ const Sidebar = () => {
           </div>
           {user.user.user.roles.role==="HOD"?(
               <button
-              className="btn-item"
+              className={`btn-item ${modalOpen.header === "Add User" ? "btn-selected" : ""}`}
               onClick={() => {
                 dispatch(
                   setModalOpen({
@@ -88,7 +87,7 @@ const Sidebar = () => {
             </button>
           </Link>
           <button
-            className={`btn-item ${path === "" ? "btn-selected" : ""}`}
+            className={`btn-item ${modalOpen.header === "Add New Item" ? "btn-selected" : ""}`}
             onClick={() => {
               dispatch(
                 setModalOpen({
