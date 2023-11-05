@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 function Modal({ setOpenModal, index, data, header, component }) {
 
   // const { header, component } = useSelector(state => state.modal);
-
+  console.log(header);
   useEffect(() => {
     const close = (e) => {
       if (e.keyCode === 27) {

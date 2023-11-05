@@ -36,8 +36,10 @@ const Sidebar = () => {
     setModalOpen(false);
     console.log("!!!!");
   };
+  console.log(modalOpen);
 
   const comp = <ItemForm handleModal={handleModal} />;
+  const userComp = <AddUserForm handleModal={handleModal} />;
   return (
     <div className="sidebar">
       <div className="hex">
@@ -104,8 +106,8 @@ const Sidebar = () => {
           {modalOpen && (
             <Modal
               setOpenModal={setModalOpen}
-              header="Add New Item"
-              component={comp}
+              header={modalOpen.header === "Add User" ? "Add User" : "Add New Item"}
+              component={modalOpen.header === "Add User" ? userComp : comp}
             />
           )}
         </div>
