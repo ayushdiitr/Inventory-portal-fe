@@ -134,7 +134,7 @@ const AddUserForm = ({ handleModal }) => {
                   type={"text"} >
                   {
                     labList.map((data) => {
-                      return <option value={data.name}>{data.name}</option>
+                      return <option value={data._id}>{data.name}</option>
                     })}
                   </select>
                     </div>
