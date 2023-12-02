@@ -6,7 +6,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import lodash from "lodash";
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, ExperimentOutlined, AppstoreAddOutlined } from '@ant-design/icons';
 import { Dropdown, message, Tabs } from 'antd';
 import IssuedItemLogs from "../LogPortal/IssuedItemLogs";
 import PendingLogs from "../LogPortal/PendingLogs";
@@ -43,7 +43,7 @@ const Header = () => {
     {
       label: 'View Labs',
       key: '3',
-      icon: <UserOutlined />,
+      icon: <ExperimentOutlined />,
       onClick: () => {
         navigate("/manageLabs");
       }
@@ -51,7 +51,7 @@ const Header = () => {
     {
       label: 'Add Labs',
       key: '4',
-      icon: <UserOutlined />,
+      icon: <AppstoreAddOutlined />,
       disabled: role==="HOD"?false:true,
       danger: true,
       onClick: () => {
