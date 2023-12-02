@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import api from "../../https/api";
 
-const ReturnForm = ({handleSubmit, handleTransfer}) => {
+const ReturnForm = ({ handleSubmit, handleTransfer }) => {
     const [check, setCheck] = useState(true);
     const [labName, setLabName] = useState("");
     const [labList, setLabList] = useState([]);
@@ -16,11 +16,11 @@ const ReturnForm = ({handleSubmit, handleTransfer}) => {
         };
         getLabList();
     }, [check]);
-    
+
     console.log(labName);
     return (
         <div className={styles.form}>
-            <Checkbox 
+            <Checkbox
                 checked={check}
                 onChange={(e) => setCheck(e.target.checked)}
             >
@@ -29,36 +29,41 @@ const ReturnForm = ({handleSubmit, handleTransfer}) => {
             {
                 !check ? (
                     <div className={styles.ReturnForm}>
-                    <div className={styles.returnFormHeading}>
+                        <div className={styles.returnFormHeading}>
 
-                         Transfer to Lab 
-                    </div>
+                            Transfer to Lab
+                        </div>
                         <div className={styles.returnSelect}>
-          <select
-          name="holderName"
-          className={styles.item}
-          value={labName}
-          onChange={(e) => setLabName(e.target.value)}
-        >
-          {labList.map((data) => {
-            return <option value={data._id}>{data.name}</option>
-            // <option value={data.name}>{data.name}</option>;
-          })}
-        </select>
-      </div>
-      <Tooltip zIndex={10000} placement="bottom" title="Transfer to selected lab">
-      <Button onClick={() => handleTransfer(labName)} type="primary" danger>
-        Return
-      </Button>
-      </Tooltip>
+                            <select
+                                name="holderName"
+                                className={styles.item}
+                                value={labName}
+                                onChange={(e) => setLabName(e.target.value)}
+                            >
+                                {labList.map((data) => {
+                                    return (
+                                        <>
+                                            <option value="" disabled selected hidden>Select Lab</option>
+                                            <option value={data._id}>{data.name}</option>
+                                        </>
+                                    )
+                                    // <option value={data.name}>{data.name}</option>;
+                                })}
+                            </select>
+                        </div>
+                        <Tooltip zIndex={10000} placement="bottom" title="Transfer to selected lab">
+                            <Button onClick={() => handleTransfer(labName)} type="primary" danger>
+                                Return
+                            </Button>
+                        </Tooltip>
                     </div>
                 ) : (
                     <>
-                    <Tooltip zIndex={10000} title="Return to its origin, from where it was issued">
-                    <Button onClick={() => handleSubmit()} type="primary" danger>
-                        Return
-                    </Button>
-                    </Tooltip>
+                        <Tooltip zIndex={10000} title="Return to its origin, from where it was issued">
+                            <Button onClick={() => handleSubmit()} type="primary" danger>
+                                Return
+                            </Button>
+                        </Tooltip>
                     </>
                 )
             }

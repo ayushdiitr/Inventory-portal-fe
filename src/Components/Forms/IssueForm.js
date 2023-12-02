@@ -145,8 +145,13 @@ const IssueForm = ({ itemData, handleModal }) => {
           onChange={(e) => setHolderName(e.target.value)}
          >
           {users.map((data) => {
-            return <option email={data.email} value={data.email}>{data.name}</option>
-            // <option value={data.name}>{data.name}</option>;
+            return (
+              <>
+              <option value="" disabled selected hidden>Select User</option>
+             <option email={data.email} value={data.email}>{data.name}</option>
+             {/* // <option value={data.name}>{data.name}</option>; */}
+              </>
+            )
           })}
         </select>
       </div>
