@@ -17,6 +17,7 @@ const IssueForm = ({ itemData, handleModal }) => {
   const issuer = user.user.user._id;
   const item = get(itemData, "_id");
   const [quantity, setQuantity] = useState(get(itemData, "quantity", 0));
+  const [holderEmail, setHolderEmail] = useState();
   const [holderName, setHolderName] = useState();
   const [issueDate, setIssueDate] = useState(
     moment(Date.now()).format("yyyy-MM-DD")
@@ -40,7 +41,7 @@ const IssueForm = ({ itemData, handleModal }) => {
       description: "Item Issued successfully.",
     });
   };
-// console.log(user.user.user.email);
+// console.log(holderName);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -48,13 +49,13 @@ const IssueForm = ({ itemData, handleModal }) => {
         item,
         quantity,
         issuedFrom : {issuer: user.user.user.name, labName:''},
-        holderName,
+        holderName: holderName,
         dateOfIssue : issueDate,
         projectName,
         description,
         contactNumber,
         issuedFromEmail : user.user.user.email,
-        issuedToEmail : holderName,
+        issuedToEmail : holderEmail,
       };
 
       await api.post(
@@ -75,9 +76,9 @@ const IssueForm = ({ itemData, handleModal }) => {
   };
 
   const changeHolderName = (e) => {
-    
-    setHolderName(e.target.value);
-    setQuery(e.target.value);
+    // console.log(holderName, holderEmail);
+    setHolderEmail(e.target.value);
+    setHolderName(e.target.selectedOptions[0].label);
   }
 
   const onSearch = (e) => {
@@ -136,19 +137,18 @@ const IssueForm = ({ itemData, handleModal }) => {
           placeholder={"Enter Holder's Name"}
           type={"text"}
         /> */}
-        {console.log(holderName, "holderemail")}
         <div className={styles.select}>
         <select
           name="holderName"
           className={styles.item}
-          value={holderName}
-          onChange={(e) => setHolderName(e.target.value)}
+          value={holderEmail}
+          onChange={changeHolderName}
          >
           {users.map((data) => {
             return (
               <>
               <option value="" disabled selected hidden>Select User</option>
-             <option email={data.email} value={data.email}>{data.name}</option>
+             <option key={data.name} value={data.email}>{data.name}</option>
              {/* // <option value={data.name}>{data.name}</option>; */}
               </>
             )
