@@ -64,7 +64,7 @@ const ReturnButton = ({
     console.log(newLabId, "newLabId");
     setLoading(true);
     try {
-      await api.post("app/v1/logs/transfer/" + id, newLabId, {
+      await api.post("app/v1/logs/transfer/" + id, {newLabId:newLabId}, {
         headers: {
           Authorization: `Bearer ${cookie.token}`,
         },
