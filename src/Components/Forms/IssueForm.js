@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import InputBox from "../../HelperComponents/InputBox/InputBox";
 import api from "../../https/api";
 import styles from "./Form.module.css";
-import { get } from "lodash";
+import { get, set, values } from "lodash";
 import { useSelector } from "react-redux";
 import Modal from "./../../HelperComponents/Modal/Modal";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { Button, notification } from "antd";
+import { Button, Select, Tooltip, notification } from "antd";
 
 const IssueForm = ({ itemData, handleModal }) => {
   const [cookie] = useCookies();
@@ -25,6 +25,8 @@ const IssueForm = ({ itemData, handleModal }) => {
   const [description, setDescription] = useState("");
   const [contactNumber, setContactNumber] = useState(9999999999);
   const [apis, contextHolder] = notification.useNotification();
+  const [query, setQuery] = useState("");
+  const [users, setUsers] = useState([]);
 
   const errorNotification = (type) => {
     apis[type]({
@@ -38,19 +40,21 @@ const IssueForm = ({ itemData, handleModal }) => {
       description: "Item Issued successfully.",
     });
   };
-
+// console.log(user.user.user.email);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const data = {
         item,
         quantity,
-        issuedFrom : {issuer: user.user.user.name},
+        issuedFrom : {issuer: user.user.user.name, labName:''},
         holderName,
         dateOfIssue : issueDate,
         projectName,
         description,
         contactNumber,
+        issuedFromEmail : user.user.user.email,
+        issuedToEmail : holderName,
       };
 
       await api.post(
@@ -69,6 +73,40 @@ const IssueForm = ({ itemData, handleModal }) => {
     }
     setTimeout(handleModal, 500);
   };
+
+  const changeHolderName = (e) => {
+    
+    setHolderName(e.target.value);
+    setQuery(e.target.value);
+  }
+
+  const onSearch = (e) => {
+    setQuery(e);
+  }
+
+  useEffect(() => {
+    (async() => {
+      console.log(query, "query");
+      try {
+        const response = await api.post("/app/v1/auth/searchUsers", {
+          query: query, 
+          headers: {
+            Authorization: `Bearer ${cookie.token}`,
+          },
+        });
+        console.log(response.data.data.users, "response");
+        setUsers(response.data.data.users);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [query])
+
+  const options=() => {
+     users.map((data) => {
+      return {value: data.name, label: data.name, email: data.email};
+    })  
+  }
 
   return (
     <form className={styles.form}>
@@ -91,13 +129,27 @@ const IssueForm = ({ itemData, handleModal }) => {
           max={itemData.limit}
         />
       </div>
-      <div className={styles.container}>
-        <InputBox
+      <div >
+        {/* <InputBox
           name={"holderName"}
-          onChange={(e) => setHolderName(e.target.value)}
+          onChange={changeHolderName}
           placeholder={"Enter Holder's Name"}
           type={"text"}
-        />
+        /> */}
+        {console.log(holderName, "holderemail")}
+        <div className={styles.select}>
+        <select
+          name="holderName"
+          className={styles.item}
+          value={holderName}
+          onChange={(e) => setHolderName(e.target.value)}
+         >
+          {users.map((data) => {
+            return <option email={data.email} value={data.email}>{data.name}</option>
+            // <option value={data.name}>{data.name}</option>;
+          })}
+        </select>
+      </div>
       </div>
       <div className={styles.container}>
         <InputBox

@@ -40,7 +40,9 @@
 
 .searchCont {
   margin-top: 10px;
-  background-color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: antiquewhite; */
 }
 
 .search {
@@ -110,4 +112,11 @@
   font-weight: 700;
   cursor: pointer;
   text-transform: uppercase;
+}
+
+.userBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
 }

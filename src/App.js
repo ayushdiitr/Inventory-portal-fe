@@ -17,13 +17,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "./store/authSlice";
 import 'antd/dist/reset.css';
 import Modal from "./HelperComponents/Modal/Modal";
+import ManageUsers from "./Components/Profile/UsersPage";
+import ManageItems from "./Components/Profile/ItemsPage";
+import AddLab from "./Components/Profile/AddLab";
+import ProfilePage from "./Components/Profile/UserPage";
 
 function App() {
   const [cookie] = useCookies();
   const dispach = useDispatch();
   const { isAuth,user } = useSelector((state) => state.user);
   const { open } = useSelector(state => state.modal);
-
+  console.log(user);
   useEffect(() => {
     (async () => {
       if (cookie.token) {
@@ -55,6 +59,10 @@ function App() {
             <Route index element={<Dashboard user={user}/>} />
             <Route element={<Dashboard user={user}/>} path="dashboard" />
             <Route element={<LogPortal />} path="logsPortal" />
+            <Route element={<ManageUsers />} path="/manageUsers" />
+            <Route element={<ManageItems />} path="/managelabs" />
+            <Route element={<AddLab />} path="/addLab" />
+            <Route element={<ProfilePage user={user} />} path="/profile" />
           </Route>
           <Route
             element={!isAuth ? <Admin /> : <Navigate to="/dashboard" />}

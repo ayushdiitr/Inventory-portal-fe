@@ -9,7 +9,7 @@ import { Table } from "antd";
 import ItemForm from "../Forms/ItemForm";
 import Modal from "../../HelperComponents/Modal/Modal";
 
-const LogPortal = () => {
+const IssuedItemLogs = () => {
   const [cookie] = useCookies();
   const [logsData, setLogsData] = useState([]);
   const [trigger, setTrigger] = useState(false);
@@ -30,10 +30,10 @@ const LogPortal = () => {
   };
   return (
     <div>
-      {/* <Table columns={columns(handleClick)} dataSource={logsData} /> */}
+      <Table columns={columns(handleClick)} dataSource={logsData} />
       <Outlet />
     </div>
   );
 };
 
-export default LogPortal;
+export default IssuedItemLogs;

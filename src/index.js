@@ -8,13 +8,11 @@ import { CookiesProvider } from "react-cookie";
 import store from "./store/store";
 
 ReactDOM.render(
-  <React.StrictMode>
     <CookiesProvider>
       <Provider store={store}>
         <App />
       </Provider>
-    </CookiesProvider>
-  </React.StrictMode>,
+    </CookiesProvider>,
   document.getElementById("root")
 );
 

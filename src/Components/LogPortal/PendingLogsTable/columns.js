@@ -7,7 +7,7 @@ const columns = (handleClick = () => { }) => [
     title: "ITEM NAME",
     dataIndex: "_id",
     render: (id, data) => {
-      return <>{data?.item?.itemName}</>;
+      return <>{data.item.itemName}</>;
     },
     sorter: (a, b) => a.item.itemName.length - b.item.itemName.length,
   },
@@ -44,35 +44,19 @@ const columns = (handleClick = () => { }) => [
     },
     sorter: (a, b) => moment(a.issueDate).unix() - moment(b.issueDate).unix(),
   },
-  {
-    key: "returnDate",
-    title: "RETURN DATE",
-    dataIndex: "returnDate",
-    render: (data) => {
-      return (
-        <>
-          {data}
-        </>
-      );
-    },
-    sorter: (a, b) => moment(a.returnDate).unix() - moment(b.returnDate).unix(),
-
-  },
-  {
-    key: "return",
-    title: "RETURN",
-    dataIndex: "returnStatus",
-    render: (id, d) => {
-      return (
-        <ReturnButton
-          itemType={d.item?.itemType}
-          index={id}
-          id={d._id}
-          handleClick={handleClick}
-        />
-      );
-    },
-  },
+  // {
+  //   key: "returnDate",
+  //   title: "RETURN DATE",
+  //   dataIndex: "returnDate",
+  //   render: (data) => {
+  //     return (
+  //       <>
+  //         {data}
+  //       </>
+  //     );
+  //   },
+    // sorter: (a, b) => moment(a.returnDate).unix() - moment(b.returnDate).unix(),
+  // },
 ];
 
 export default columns;

@@ -6,6 +6,7 @@ import { get } from "lodash";
 import Modal from "../Modal/Modal";
 import { notification } from "antd";
 import Loader from "../Loader/Loader";
+import ReturnForm from "../../Components/Forms/ReturnForm";
 
 const ReturnButton = ({
   id,
@@ -56,9 +57,38 @@ const ReturnButton = ({
       console.log(err);
     }
     setLoading(false);
+    setModalOpen(false);
   };
+  
+  const handleTransfer = async (newLabId) => {
+    console.log(newLabId, "newLabId");
+    setLoading(true);
+    try {
+      await api.post("app/v1/logs/transfer/" + id, newLabId, {
+        headers: {
+          Authorization: `Bearer ${cookie.token}`,
+        },
+      });
+      // setModalOpen(true);
+      handleClick(!modalOpen);
+      infoNotification("info");
+    } catch (err) {
+      errorNotification("error");
+      console.log(err);
+    }
+    setLoading(false);
+    setModalOpen(false);
+  };
+  const handleReturn = () => {
+    setModalOpen(true);
+  }
 
+  const handleModal = () => {
+    setModalOpen(false);
+  }
+  
   useEffect(() => {}, [modalOpen]);
+  const comp = <ReturnForm handleModal={handleModal} handleSubmit={handleSubmit} handleTransfer={handleTransfer} />
   return (
     <>
       {contextHolder}
@@ -71,10 +101,11 @@ const ReturnButton = ({
           {index === 0 ? (
             <button className={str}>RETURN</button>
           ) : (
-            <button onClick={handleSubmit} className={str}>
+            <button disabled={!index} onClick={handleReturn} className={str}>
               RETURN
             </button>
           )}
+          {modalOpen && <Modal header={"Return/Transfer"} setOpenModal={setModalOpen} component={comp} />}
           {/* {modalOpen && <Modal setOpenModal={setModalOpen} index={2} />} */}
           {/* {modalOpen && <Modal setOpenModal={setModalOpen} header="Item Returned Successfully" />} */}
         </div>

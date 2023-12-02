@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import InputBox from "../../HelperComponents/InputBox/InputBox";
 import api from "../../https/api";
@@ -10,6 +10,7 @@ import Loader from "../../HelperComponents/Loader/Loader";
 import { Button, notification } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 
 const ItemForm = ({ itemData, handleModal }) => {
   const options = [
@@ -43,6 +44,8 @@ const ItemForm = ({ itemData, handleModal }) => {
   const [units, setUnits] = useState(get(itemData, "unit", "units"));
   const [apis, contextHolder] = notification.useNotification();
   const {user} = useSelector((state)=>state.user)
+  const [labs, setLabs] = useState([]);
+  const [labType, setLabType] = useState()
 
   const errorNotification = (type) => {
     apis[type]({
@@ -68,6 +71,7 @@ const ItemForm = ({ itemData, handleModal }) => {
         itemType,
         limit,
         unit: units,
+        lab: labType,
         owners:new Map([
           [user.user._id,quantity]
         ])
@@ -98,6 +102,14 @@ const ItemForm = ({ itemData, handleModal }) => {
     setTimeout(handleModal, 500);
     setLoading(false);
   };
+
+  useEffect(() => {
+    (async() => {
+      const labData = await api.get("app/v1/lab/getLabs");
+      setLabs(labData.data.data);
+    })()
+  },[])
+
   return (
     <form className={styles.form}>
       {contextHolder}
@@ -146,6 +158,26 @@ const ItemForm = ({ itemData, handleModal }) => {
         >
           {options.map((data) => {
             return <option value={data.value}>{data.label}</option>;
+          })}
+        </select>
+      </div>
+      {/* Labs */}
+      <div className={styles.select}>
+        <select
+          name="Lab"
+          className={styles.item}
+          placeholder="Select Lab"
+          value={labType}
+          onChange={(e) => setLabType(e.target.value)}
+        >
+          {console.log(labType, "labType")}
+          {labs.map((data) => {
+              return (
+                <>
+                <option value="" disabled selected hidden>Select Lab</option>
+                <option value={data._id}>{data.name}</option> 
+                </>
+                )
           })}
         </select>
       </div>

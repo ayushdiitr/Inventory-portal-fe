@@ -9,7 +9,7 @@ import { get } from "lodash";
 // import columns from "./Table/columns";
 import columns from "./Table/col";
 import Modal from "../../HelperComponents/Modal/Modal";
-import { Input, Select, Table } from "antd";
+import { Input, Select, Table, message } from "antd";
 import styles from "./Table/Table.module.css";
 import DeleteForm from "../Forms/DeleteForm";
 import IssueForm from "../Forms/IssueForm";
@@ -24,6 +24,7 @@ const Dashboard = ({user}) => {
   const [itemData, setItemData] = useState(null);
   const [query, setQuery] = useOutletContext();
   const [property, setProperty] = useState("");
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     (async () => {
@@ -64,8 +65,21 @@ const Dashboard = ({user}) => {
 
   const col = columns(handleClick);
 
+  if(user.user.firstLogin){
+    console.log("first login", user.user.firstLogin);
+    const success = () => {
+      messageApi.open({
+        type: 'warning',
+        content: 'Change your password by clicking on your name on the top right corner',
+        duration: 5,
+      });
+    };
+    success();
+  }
+
   return (
     <div>
+      {contextHolder}
       {/* {console.log(itemsData)} */}
       <Table
         className={styles.table}

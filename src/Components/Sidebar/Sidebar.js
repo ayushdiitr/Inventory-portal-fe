@@ -14,11 +14,11 @@ import { useSelector } from "react-redux";
 import inventoryLogo from "./Assets/inventoryLogo.svg";
 import ItemForm from "../Forms/ItemForm";
 import AddUserForm from "../Forms/AddUserForm";
+import { UserAddOutlined } from "@ant-design/icons";
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
   const userName = user.user.user.name;
-  const role = user.user.user.roles.role;
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [, removeCookie] = useCookies();
@@ -45,9 +45,7 @@ const Sidebar = () => {
         <div className="itemCont">
           <div className="userName">
             <img className="" src={inventoryLogo} alt="" />
-            <h3>Welcome,{userName} !</h3>
-            <h4>{role}</h4>
-            <h4>{user.user.user.roles.lab.name}</h4>
+
             <h4>{user.user.user.department.name}</h4>
           </div>
           {user.user.user.roles.role==="HOD"?(
@@ -62,7 +60,8 @@ const Sidebar = () => {
                   })
                 );
               }}
-              >
+              > 
+                <UserAddOutlined style={{fontSize: '24px'}} />
                 <p>Add Users</p>
               </button>
           ):(
