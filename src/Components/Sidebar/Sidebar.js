@@ -18,7 +18,6 @@ import { UserAddOutlined } from "@ant-design/icons";
 
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
-  const userName = user.user.user.name;
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
   const [, removeCookie] = useCookies();
@@ -32,9 +31,7 @@ const Sidebar = () => {
   };
 
   const handleModal = (e) => {
-    console.log("!!");
     setModalOpen(false);
-    console.log("!!!!");
   };
 
   const comp = <ItemForm handleModal={handleModal} />;

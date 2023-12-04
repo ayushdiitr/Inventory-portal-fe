@@ -38,11 +38,11 @@ const ManageUsers = () => {
                     
             )
         },
-        {
-            title: 'Department',
-            dataIndex: 'department',
-            key: 'department',
-        },
+        // {
+        //     title: 'Department',
+        //     dataIndex: 'department',
+        //     key: 'department',
+        // },
         
     ]
         

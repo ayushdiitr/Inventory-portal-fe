@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Card, Col, Divider, Row, Skeleton, Space, Typography } from 'antd';
+import { Avatar, Card, Col, Divider, Row, Skeleton, Space, Typography, Watermark } from 'antd';
 import Sidebar from '../Sidebar/Sidebar';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -30,6 +30,8 @@ const ItemPage = () => {
     }, [cookie.token, id])
     return (
         <div>
+            <Watermark color='rgba(0,0,0,0.15)'  content="Inventory Management" >
+
             {/* <Sidebar  /> */}
             <div style={{ marginLeft: '12%', padding: '2rem' }}>
                 <Row>
@@ -78,6 +80,7 @@ const ItemPage = () => {
                 </Skeleton>
 
             </div>
+            </Watermark>
         </div>
     )
 }
