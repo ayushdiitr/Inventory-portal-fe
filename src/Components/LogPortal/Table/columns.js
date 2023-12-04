@@ -1,3 +1,4 @@
+import { Typography } from "antd";
 import dateConverter from "../../../HelperComponents/dateConverter";
 import ReturnButton from "./../../../HelperComponents/ReturnButton/ReturnButton";
 import moment from "moment";
@@ -7,7 +8,12 @@ const columns = (handleClick = () => { }) => [
     title: "ITEM NAME",
     dataIndex: "_id",
     render: (id, data) => {
-      return <>{data?.item?.itemName}</>;
+      console.log(data);
+      return (
+        <Typography.Link target="_blank" href={`item/${data.item._id}`}>
+      {data?.item?.itemName}
+        </Typography.Link>
+      )
     },
     sorter: (a, b) => a.item.itemName.length - b.item.itemName.length,
   },

@@ -25,9 +25,14 @@ const ManageItems = () => {
             key: 'contactNumber',
         },
         {
-            title: 'Actions',
+            title: 'Department',
             dataIndex: 'department',
             key: 'department',
+            render: (department) => (
+                <span>
+                    {department.name}
+                </span>
+            )
         },
         
     ]

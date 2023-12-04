@@ -15,7 +15,10 @@ const columns = (handleClick = () => { }) => [
     title: "ITEM NAME",
     dataIndex: "itemName",
     key: "itemName",
-    sorter: (a, b) => a.itemName.length - b.itemName.length,
+    // sorter: (a, b) => a.itemName.length - b.itemName.length,
+    render: (data, val) => {
+      return <Typography.Link target="_blank" href={`item/${val._id}`}>{data}</Typography.Link>;
+    }
   },
   {
     title: "QUANTITY",

@@ -21,6 +21,7 @@ import ManageUsers from "./Components/Profile/UsersPage";
 import ManageItems from "./Components/Profile/ItemsPage";
 import AddLab from "./Components/Profile/AddLab";
 import ProfilePage from "./Components/Profile/UserPage";
+import ItemPage from "./Components/ItemPage";
 
 function App() {
   const [cookie] = useCookies();
@@ -64,6 +65,7 @@ function App() {
             <Route element={<AddLab />} path="/addLab" />
             <Route element={<ProfilePage user={user} />} path="/profile" />
           </Route>
+          <Route element={<ItemPage />} path="/item/:id" />
           <Route
             element={!isAuth ? <Admin /> : <Navigate to="/dashboard" />}
             path="/login"

@@ -43,6 +43,10 @@ const IssueForm = ({ itemData, handleModal }) => {
   };
 // console.log(holderName);
   const handleSubmit = async (e) => {
+    if(quantity > itemData.limit){
+      errorNotification("error");
+      return;
+    }
     e.preventDefault();
     try {
       const data = {
@@ -129,6 +133,7 @@ const IssueForm = ({ itemData, handleModal }) => {
           type={"number"}
           max={itemData.limit}
         />
+        {console.log(itemData.limit, quantity)}
       </div>
       <div >
         {/* <InputBox
