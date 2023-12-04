@@ -6,6 +6,7 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import plusminus from "./asset/icon.svg";
+import { Typography, Divider } from "antd";
 
 var qty;
 var qtyFlag;
@@ -102,41 +103,54 @@ const columns = (handleClick = () => { }) => [
       );
     },
   },
+  // {
+  //   title: "ADD/ REMOVE STOCK",
+  //   dataIndex: "_id",
+  //   render: (data, r) => {
+  //     return (
+  //       <div onClick={() => handleClick(r, "update")} style={{ width: "50px", marginLeft: "5vw", cursor: "pointer" }}>
+  //         <img src={plusminus} style={{ width: "24px" }} />
+  //       </div>
+  //     );
+  //   },
+  // },
   {
-    title: "ADD/ REMOVE STOCK",
+    title: "ACTIONS",
     dataIndex: "_id",
     render: (data, r) => {
       return (
-        <div onClick={() => handleClick(r, "update")} style={{width: "50px", marginLeft: "5vw",cursor:"pointer"}}>
-          <img src={plusminus} style={{width: "24px"}} />
+        <div style={{display:"flex", justifyContent:'space-evenly'}}>
+          <Typography.Link>
+            <EditOutlined
+              style={{ fontSize: "22px", cursor: "pointer" }}
+              onClick={() => handleClick(r, "edit")}
+            />
+          </Typography.Link>
+          <Divider type="vertical" />
+          <Typography.Link>
+          <span onClick={() => handleClick(r, "update")} style={{  cursor: "pointer" }}>
+          <img alt="change quantity icon" src={plusminus} style={{ width: "22px" }} />
+        </span>
+          </Typography.Link>
+          <Divider type="vertical" />
+          <Typography.Link type="danger">
+            <DeleteOutlined
+              style={{ fontSize: "22px", cursor: "pointer" }}
+              onClick={() => handleClick(r, "delete")}
+            />
+          </Typography.Link>
         </div>
       );
     },
   },
-  {
-    title: "EDIT",
-    dataIndex: "_id",
-    render: (data, r) => {
-      return (
-        <EditOutlined
-          style={{ fontSize: "22px", cursor: "pointer" }}
-          onClick={() => handleClick(r, "edit")}
-        />
-      );
-    },
-  },
-  {
-    title: "DELETE",
-    dataIndex: "_id",
-    render: (data, r) => {
-      return (
-        <DeleteOutlined
-          style={{ fontSize: "22px", cursor: "pointer" }}
-          onClick={() => handleClick(r, "delete")}
-        />
-      );
-    },
-  },
+  // {
+  //   title: "DELETE",
+  //   dataIndex: "_id",
+  //   render: (data, r) => {
+  //     return (
+  //     );
+  //   },
+  // },
 ];
 
 export default columns;

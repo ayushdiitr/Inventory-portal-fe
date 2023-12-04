@@ -25,7 +25,7 @@ const columns = (handleClick = () => { }) => [
   },
   {
     key: "issuedFrom",
-    title: "ISSUED FROM",
+    title: "LAB NAME",
     render: (data) => {
       return <>{data.issuedFrom.labName}</>;
     }
