@@ -1,9 +1,11 @@
 import { Button, Form, Input, InputNumber } from 'antd';
 import { useSelector } from 'react-redux';
 import api from '../../https/api';
+import { useNavigate } from 'react-router-dom';
 
 const AddLab = () => {
     const user  = useSelector(state => state.user.user)
+    const navigate = useNavigate();
     const department = user.user.department.name;
     const [form] = Form.useForm();
     const layout = {
@@ -35,11 +37,13 @@ const AddLab = () => {
                         email: values.lab.email,
                         contactNumber: values.lab.contact,
                         department: values.lab.department,
+                        fc: values.lab.fc,
                     });
                     if(res.status === 201){
                             console.log("success")
                             alert("Lab Added Successfully")
-                            form.resetFields();                
+                            form.resetFields();   
+                            navigate('/dashboard')
                         }
                     }
                     catch(err){
@@ -77,11 +81,23 @@ const AddLab = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
+                    name={['lab', 'fc']}
+                    label="Faculty Coordinator"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
                     name={['lab', 'email']}
                     label="Email"
                     rules={[
                         {
                             type: 'email',
+                            required: true,
                         },
                     ]}
                 >

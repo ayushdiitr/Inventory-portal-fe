@@ -20,6 +20,11 @@ const ManageItems = () => {
             key: 'email',
         },
         {
+            title: 'Faculty Coordinator',
+            dataIndex: 'facultyCoordinator',
+            key: 'facultyCoordinator',
+        },
+        {
             title: 'Phone Number',
             dataIndex: 'contactNumber',
             key: 'contactNumber',
