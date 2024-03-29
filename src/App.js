@@ -22,11 +22,12 @@ import ManageItems from "./Components/Profile/ItemsPage";
 import AddLab from "./Components/Profile/AddLab";
 import ProfilePage from "./Components/Profile/UserPage";
 import ItemPage from "./Components/ItemPage";
+import Callback from "./Components/Admin/Callback";
 
 function App() {
   const [cookie] = useCookies();
   const dispach = useDispatch();
-  const { isAuth,user } = useSelector((state) => state.user);
+  const { isAuth, user } = useSelector((state) => state.user);
   const { open } = useSelector(state => state.modal);
   console.log(user);
   useEffect(() => {
@@ -57,8 +58,8 @@ function App() {
             path="/"
             element={isAuth ? <Header /> : <Navigate to="/login" />}
           >
-            <Route index element={<Dashboard user={user}/>} />
-            <Route element={<Dashboard user={user}/>} path="dashboard" />
+            <Route index element={<Dashboard user={user} />} />
+            <Route element={<Dashboard user={user} />} path="dashboard" />
             <Route element={<LogPortal />} path="logsPortal" />
             <Route element={<ManageUsers />} path="/manageUsers" />
             <Route element={<ManageItems />} path="/managelabs" />
@@ -69,6 +70,10 @@ function App() {
           <Route
             element={!isAuth ? <Admin /> : <Navigate to="/dashboard" />}
             path="/login"
+          />
+          <Route
+            element={<Callback />}
+            path="/home"
           />
         </Routes>
       </Router>

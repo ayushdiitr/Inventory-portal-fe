@@ -9,6 +9,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../store/authSlice";
 import Loader from "../../HelperComponents/Loader/Loader";
+import { Button } from "antd";
 
 const Admin = () => {
   const [loading, setLoading] = useState(false);
@@ -18,25 +19,31 @@ const Admin = () => {
   const [, setCookie] = useCookies();
   const dispach = useDispatch();
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      const data = await api.post("/app/v1/auth/login", {
-        email,
-        password,
-      });
-      setCookie("token", data.data.token);
-      dispach(
-        setAuth({
-          user: data.data.data,
-        })
-      );
-      navigate("/dashboard");
-    } catch (err) {
-      console.log(err);
-    }
-    setLoading(false);
-  };
+  const handleSubmit = async()=>{
+    const url = `https://channeli.in/oauth/authorise?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}`;
+
+    window.location.href = url;
+  }
+
+  // const handleSubmit = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const data = await api.post("/app/v1/auth/login", {
+  //       email,
+  //       password,
+  //     });
+  //     setCookie("token", data.data.token);
+  //     dispach(
+  //       setAuth({
+  //         user: data.data.data,
+  //       })
+  //     );
+  //     navigate("/dashboard");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   setLoading(false);
+  // };
 
   return (
     <div>
@@ -49,7 +56,7 @@ const Admin = () => {
             <Loader />
           ) : (
             <>
-              <div className={styles.userlogo}>
+              {/* <div className={styles.userlogo}>
                 <img src={user} alt="" />
               </div>
               <h2>ACCOUNT LOGIN</h2>
@@ -69,7 +76,12 @@ const Admin = () => {
               </div>
               <button className={styles.loginbtn} onClick={handleSubmit}>
                 Log In
-              </button>
+              </button> */}
+              <div>
+                <Button 
+                type="primary"
+                onClick={handleSubmit}>Login With Channel I</Button>
+              </div>
             </>
           )}
         </div>

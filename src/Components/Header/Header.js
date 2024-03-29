@@ -21,8 +21,9 @@ const Header = () => {
   var str = lodash.startCase(x);
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const userName = user.user.user.name;
-  const role = user.user.user.roles.role;
+  console.log("USER",user.user.user.name)
+  const userName = user?.user?.user?.name;
+  const role = user?.user?.user?.roles.role;
   // console.log(x);
 
   const handleMenuClick = (e) => {

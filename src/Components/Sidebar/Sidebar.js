@@ -19,6 +19,7 @@ import { UserAddOutlined } from "@ant-design/icons";
 const Sidebar = () => {
   const user = useSelector((state) => state.user);
   const [modalOpen, setModalOpen] = useState(false);
+  const [addProjectModal, setAddProjectModal] = useState(false);
   const navigate = useNavigate();
   const [, removeCookie] = useCookies();
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const Sidebar = () => {
           <div className="userName">
             <img className="" src={inventoryLogo} alt="" />
 
-            <h4>{user.user.user.department.name}</h4>
+            <h4>{user.user.user.department?.name}</h4>
           </div>
           {user.user.user.roles.role==="HOD"?(
               <button
@@ -98,6 +99,16 @@ const Sidebar = () => {
 
             <p>Add new items</p>
           </button>
+          <Link>
+                <button className="btn-item">Add Project</button>
+          </Link>
+          {addProjectModal && (
+            <Modal
+            setOpenModal={setAddProjectModal}
+            header="Add Project"
+            component={<div>Project Form</div>}
+            />
+          )}
           {modalOpen && (
             <Modal
               setOpenModal={setModalOpen}
